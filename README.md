@@ -3,6 +3,6 @@
 
 About a happy-go-lucky book that wants to get home before dawn, so he can help young Kevin fall asleep.
 
-![alt text](/images/screenshot.png)
+![Screenshot](images/screenshot.PNG)
 
 
