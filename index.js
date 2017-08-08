@@ -1,26 +1,10 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-    <title>BookerMan</title>
-	<script type="text/javascript" src="js/phaser.min.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-
-<script type="text/javascript">
-
-
 var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
 
-    game.load.image('background','assets/grass_tile.png');
+    game.load.image('background','assets/tall_grass_tile.png');
     game.load.spritesheet('player','assets/bookerman.png', 42, 50);
+		game.load.spritesheet('paperplane','assets/paperplane.png', 35, 35);
 
 }
 
@@ -45,7 +29,19 @@ function create() {
 		player.animations.add('up', [10, 11, 12, 13], 10, true);
     player.animations.add('down', [15, 16, 17, 18], 10, true);
 
+		paperplane = game.add.sprite(game.world.centerX, game.world.centerY, 'paperplane');
+
+		game.physics.p2.enable(paperplane);
+
+		// Throwing paperplane animations
+		//paperplane.animations.add('left', [0], 10, true);
+		//paperplane.animations.add('right', [0], 10, true);
+		//paperplane.animations.add('up', [0], 10, true);
+    //paperplane.animations.add('down', [0], 10, true);
+
     cursors = game.input.keyboard.createCursorKeys();
+
+		keys = game.input.keyboard;
 
     game.camera.follow(player);
 
@@ -88,6 +84,12 @@ function update() {
 
         player.frame = stopFrame;
     }
+		if (keys.isDown(Phaser.Keyboard.SPACEBAR))
+		{
+			//paperplane.body.x = player.body.x;
+			//paperplane.body.y = player.body.y;
+			//paperplane.body.moveLeft(450);
+		}
 
 }
 
@@ -97,9 +99,3 @@ function render() {
     //game.debug.spriteCoords(player, 32, 500);
 
 }
-
-
-</script>
-
-</body>
-</html>
